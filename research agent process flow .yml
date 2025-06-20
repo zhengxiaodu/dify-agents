@@ -1,0 +1,1001 @@
+app:
+  description: ''
+  icon: dizzy
+  icon_background: '#D5D9EB'
+  mode: advanced-chat
+  name: 'research agent process flow '
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.5@fd6efd37c2a931911de8ab9ca3ba2da303bef146d45ee87ad896b04b36d09403
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.0.19@6b2b2e115b1b9d34a63eb26fadcc33d74330fd2ec06071bb30b8a24b1fab107a
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: seekerliu/bocha:0.0.1@7d2dbad3f9d2652300d73bb8d91337e925f3c0daf9e0a9e285e060fb9dd7aadb
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.2.4@1dc8cd4a3198584fd7639023951f388fff023caa234a4bdb8bba69d6091c2e64
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1742796656647-source-1742799131414-target
+      selected: false
+      source: '1742796656647'
+      sourceHandle: source
+      target: '1742799131414'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: answer
+      id: 1742799131414-source-1742796603242-target
+      selected: false
+      source: '1742799131414'
+      sourceHandle: source
+      target: '1742796603242'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: loop
+      id: 1742796603242-source-1742819137183-target
+      selected: false
+      source: '1742796603242'
+      sourceHandle: source
+      target: '1742819137183'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1744720209717-source-1744722384159-target
+      selected: false
+      source: '1744720209717'
+      sourceHandle: source
+      target: '1744722384159'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        sourceType: llm
+        targetType: answer
+      id: 1744719065863-source-1744739584366-target
+      selected: false
+      source: '1744719065863'
+      sourceHandle: source
+      target: '1744739584366'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        sourceType: answer
+        targetType: agent
+      id: 1744739584366-source-1744718432075-target
+      selected: false
+      source: '1744739584366'
+      sourceHandle: source
+      target: '1744718432075'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        sourceType: llm
+        targetType: assigner
+      id: 1744742949280-source-1744719657666-target
+      selected: false
+      source: '1744742949280'
+      sourceHandle: source
+      target: '1744719657666'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        sourceType: agent
+        targetType: llm
+      id: 1744718432075-source-1744742949280-target
+      selected: false
+      source: '1744718432075'
+      sourceHandle: source
+      target: '1744742949280'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        sourceType: loop-start
+        targetType: llm
+      id: 1742819137183start-source-1744719065863-target
+      source: 1742819137183start
+      sourceHandle: source
+      target: '1744719065863'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: loop
+        targetType: llm
+      id: 1742819137183-source-1744720209717-target
+      selected: false
+      source: '1742819137183'
+      sourceHandle: source
+      target: '1744720209717'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1742554928243-source-1750326292550-target
+      source: '1742554928243'
+      sourceHandle: source
+      target: '1750326292550'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1750326292550-source-1742796656647-target
+      source: '1750326292550'
+      sourceHandle: source
+      target: '1742796656647'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: start
+        type: start
+        variables:
+        - label: research_topic
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: research_topic
+        - label: max_loop
+          max_length: 48
+          options: []
+          required: true
+          type: number
+          variable: max_loop
+      height: 115
+      id: '1742554928243'
+      position:
+        x: -634.3693812078288
+        y: 720.5722752425266
+      positionAbsolute:
+        x: -634.3693812078288
+        y: 720.5722752425266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1742796656647.text#}}
+
+          <hr style="height: 1px; border: none; background-image: linear-gradient(to
+          right, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));">
+
+          '
+        desc: ''
+        selected: false
+        title: 'Intent analysis stream output '
+        type: answer
+        variables: []
+      height: 168
+      id: '1742796603242'
+      position:
+        x: -336.9938471070816
+        y: 726.694456513953
+      positionAbsolute:
+        x: -336.9938471070816
+        y: 726.694456513953
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 2dbee8f8-e806-4407-8d76-cfd0f2d5e09e
+          role: system
+          text: "topic：{{#1742554928243.research_topic#}}\n\n<intent-mining>\n为了揭示每个查询背后最深层次的用户意图，需通过以下递进层次进行分析：\n\
+            1. 表面意图：对用户所提问题的字面解读\n2. 实际意图：用户试图解决的切实目标或问题\n3. 潜在意图：用户自身可能未意识到的无意识动机\n\
+            \n将每个查询贯穿所有这些层次进行分析，尤其要专注于揭示潜在意图。 \n</intent-mining>\n然后，基于上述推测，退一步思考，探索问题背后的用户意图。"
+        - id: d85d2978-e316-4070-9b42-794ba8941bb0
+          role: user
+          text: context：{{#1742554928243.research_topic#}}
+        selected: false
+        title: coordinate
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1742796656647'
+      position:
+        x: -626.566250733924
+        y: 1037.1753509608034
+      positionAbsolute:
+        x: -626.566250733924
+        y: 1037.1753509608034
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 背景搜索結果：{{#1750326292550.text#}}
+        desc: ''
+        selected: false
+        title: Get context
+        type: answer
+        variables: []
+      height: 120
+      id: '1742799131414'
+      position:
+        x: -342.59709394212314
+        y: 962.6371820272118
+      positionAbsolute:
+        x: -342.59709394212314
+        y: 962.6371820272118
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        break_conditions:
+        - comparison_operator: '>'
+          id: f0e6a5ac-37ea-45a7-9273-b660296c0cb0
+          numberVarType: variable
+          value: '{{#1742554928243.max_loop#}}'
+          varType: number
+          variable_selector:
+          - '1742819137183'
+          - current_loop
+        desc: ''
+        error_handle_mode: terminated
+        height: 478
+        logical_operator: and
+        loop_count: 100
+        loop_variables:
+        - id: 571b3fa9-99b9-481f-9355-8a95618394e9
+          label: findings
+          value_type: constant
+          var_type: array[string]
+        - id: be149194-f806-4fa4-8a6e-a546c1b65941
+          label: executed_queries
+          value_type: constant
+          var_type: array[string]
+        - id: 61f9a683-99a9-491d-8705-2c5e84e8191b
+          label: current_loop
+          value: '1'
+          value_type: constant
+          var_type: number
+        - id: dfb571e3-dfe2-47af-bf3e-36e0b3747f16
+          label: knowledge_gap
+          value:
+          - '1742554928243'
+          - research_topic
+          value_type: variable
+          var_type: string
+        - id: 4b5be6c3-90df-4dc1-bf98-732e9b589054
+          label: visitedURLs
+          value_type: constant
+          var_type: array[string]
+        selected: false
+        start_node_id: 1742819137183start
+        title: loop
+        type: loop
+        width: 1046
+      height: 478
+      id: '1742819137183'
+      position:
+        x: -33.847706332119856
+        y: 696.1225538058086
+      positionAbsolute:
+        x: -33.847706332119856
+        y: 696.1225538058086
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1046
+      zIndex: 1
+    - data:
+        desc: ''
+        isInLoop: true
+        selected: false
+        title: ''
+        type: loop-start
+      draggable: false
+      height: 48
+      id: 1742819137183start
+      parentId: '1742819137183'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: -9.847706332119856
+        y: 764.1225538058086
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-loop-start
+      width: 44
+      zIndex: 1002
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: "你可以使用exa_search获取网址，使用exa_contents访问特定网址，并使用think基于这些进行思考。\n请先使用exa_search，然后使用exa\
+              \ url_contents，在输出响应时，请同时包含exa_search返回的网址以及图片网址。\n输出为json格式 ：\n“finding：string，\n\
+              \  url：array[string],\n”"
+          maximum_iterations:
+            type: constant
+            value: 7
+          mcp_prompts_as_tools:
+            type: constant
+            value: false
+          mcp_resources_as_tools:
+            type: constant
+            value: true
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: deepseek-chat
+              model_type: llm
+              provider: langgenius/deepseek/deepseek
+              type: model-selector
+          query:
+            type: constant
+            value: 你是一名研究人员，你当前要研究的目标是：{{#1744719065863.structured_output.search_query#}}
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: The tool should be used after using the exa URL contents
+                  or at the beginning of the task. I hope to return the "think" tool
+                  as a draft to the user with the visited URLs, each corresponding
+                  description, and findings from this investigation before taking
+                  any action or replying to the user upon receiving the tool results.
+              parameters:
+                thought:
+                  auto: 1
+                  value: null
+              provider_name: kalochin/think/think
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: A thought to think about.
+                  ja_JP: A thought to think about.
+                  pt_BR: A thought to think about.
+                  zh_Hans: 需要思考的内容。
+                label:
+                  en_US: Thought
+                  ja_JP: Thought
+                  pt_BR: Thought
+                  zh_Hans: 思考内容
+                llm_description: A thought to think about.
+                max: null
+                min: null
+                name: thought
+                options: []
+                placeholder: null
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_label: Think
+              tool_name: think
+              type: builtin
+        agent_strategy_label: ReAct (Support MCP Tools)
+        agent_strategy_name: mcp_sse_ReAct
+        agent_strategy_provider_name: junjiem/mcp_see_agent/mcp_see_agent
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        output_schema: null
+        plugin_unique_identifier: junjiem/mcp_see_agent:0.0.11@2383e32139d72d64593b6f8869d0814940787202711f97ff36dd275c0c56f465
+        selected: false
+        title: Plan
+        type: agent
+      height: 197
+      id: '1744718432075'
+      parentId: '1742819137183'
+      position:
+        x: 390.13081644666875
+        y: 65
+      positionAbsolute:
+        x: 356.2831101145489
+        y: 761.1225538058086
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-4o
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 44840411-088b-473d-8186-d0d815707e30
+          role: system
+          text: "你是一个研究型agent，负责调查以下内容 \ntopic:{{#1742554928243.research_topic#}}\n\
+            当前变量:\nknowledge_gap:{{#1742819137183.knowledge_gap#}}\nfingdings:{{#1742819137183.findings#}}\n\
+            excuted_querys:{{#1742819137183.executed_queries#}}\n\n已知信息:\nBackground\
+            \ information:{{#1750326292550.text#}}\nBackground information:{{#1742796656647.text#}}\n\
+            \n\n\n\n{\n    \"reasoning\": \"请详细解释你选择这一行动的原因……\",\n    \"search_query\"\
+            : \"关于该主题进一步研究的后续问题\",\n    \"knowledge_gaps\": 关于该主题进一步研究的后续问题\"\n}"
+        - id: 2885c5e4-79b9-4292-9a36-f512bd28384c
+          role: user
+          text: 请确保搜索查询简洁明了，且搜索引擎结果页面（SERPs）能够返回结果。过多的属性或条件可能会导致查询失败。
+        - id: 480fc7ac-a22e-495c-b8ba-b2a8d43c2b38
+          role: assistant
+          text: ''
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              knowledge_gaps:
+                description: Information that is needed to answer the original question,
+                  but not yet obtained
+                type: string
+              reasoning:
+                description: Detail why you chose this search_query
+                type: string
+              search_query:
+                description: 'Further research into the follow-up question on the
+                  topic, which is the only one that is a good query keyword for getting
+                  SERPs '
+                type: string
+            required:
+            - reasoning
+            - search_query
+            - knowledge_gaps
+            type: object
+        structured_output_enabled: true
+        title: reasoning
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1744719065863'
+      parentId: '1742819137183'
+      position:
+        x: 105.9590437121758
+        y: 65
+      positionAbsolute:
+        x: 72.11133738005594
+        y: 761.1225538058086
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        items:
+        - input_type: variable
+          operation: append
+          value:
+          - '1744719065863'
+          - structured_output
+          - search_query
+          variable_selector:
+          - '1742819137183'
+          - executed_queries
+          write_mode: over-write
+        - input_type: variable
+          operation: append
+          value:
+          - '1744718432075'
+          - text
+          variable_selector:
+          - '1742819137183'
+          - findings
+          write_mode: over-write
+        - input_type: variable
+          operation: extend
+          value:
+          - '1744742949280'
+          - structured_output
+          - urls
+          variable_selector:
+          - '1742819137183'
+          - visitedURLs
+          write_mode: over-write
+        - input_type: constant
+          operation: +=
+          value: 1
+          variable_selector:
+          - '1742819137183'
+          - current_loop
+          write_mode: over-write
+        loop_id: '1742819137183'
+        selected: false
+        title: Variable Assigner
+        type: assigner
+        version: '2'
+      height: 171
+      id: '1744719657666'
+      parentId: '1742819137183'
+      position:
+        x: 671.0846975112179
+        y: 65
+      positionAbsolute:
+        x: 637.236991179098
+        y: 761.1225538058086
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 8192
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 5374ac10-9e1e-4f6a-830c-0eb5cecbc6fc
+          role: system
+          text: '根据调查结果，对该主题进行全面分析。
+
+            提供重要的见解、结论和仍存在的不确定性。在适当的地方引用来源。此分析应非常全面和详细。
+
+
+            来源：{{#1742819137183.visitedURLs#}}
+
+            '
+        - id: 9c86a54a-9f54-4b52-9a23-720d42b520a7
+          role: user
+          text: 'fingdings:{{#1742819137183.findings#}}
+
+
+            excuted_query:{{#1742819137183.executed_queries#}}
+
+
+            topic:{{#1742554928243.research_topic#}}
+
+
+            以Markdown链接的形式输出图片。你需要确保输出的文本能够被前端正确解析。给我返回一份最终报告。
+
+
+
+            '
+        selected: false
+        structured_output_enabled: false
+        title: finalize_summary
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1744720209717'
+      position:
+        x: 1364.2225301141855
+        y: 1018.8727101448796
+      positionAbsolute:
+        x: 1364.2225301141855
+        y: 1018.8727101448796
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1744720209717.text#}}'
+        desc: ''
+        selected: false
+        title: 'Answer '
+        type: answer
+        variables: []
+      height: 104
+      id: '1744722384159'
+      position:
+        x: 1356.072061553503
+        y: 843.1292567419226
+      positionAbsolute:
+        x: 1356.072061553503
+        y: 843.1292567419226
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '### according to {{#1744719065863.structured_output.reasoning#}}
+
+          <hr style="height: 1px; background-color: #ddd; border: none; margin: 15px
+          0;">
+
+          ### The current knowledge gap is ：                           {{#1744719065863.structured_output.knowledge_gaps#}}
+
+          <hr style="height: 1px; background-color: #ddd; border: none; margin: 15px
+          0;">
+
+          ### So the next query is:{{#1744719065863.structured_output.search_query#}}'
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        selected: false
+        title: Answer 4
+        type: answer
+        variables: []
+      height: 269
+      id: '1744739584366'
+      parentId: '1742819137183'
+      position:
+        x: 114.79021529370044
+        y: 179
+      positionAbsolute:
+        x: 80.94250896158059
+        y: 875.1225538058086
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1742819137183'
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.5-flash-preview-04-17
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 089698dc-cf56-4180-9232-ba55e7228c65
+          role: system
+          text: 你可以从以下内容中中提取http网址： {{#1744718432075.text#}}
+        - id: 606298e5-db6a-4713-9ce6-557ef593710b
+          role: user
+          text: 请帮我从文本中提取链接
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              urls:
+                description: Please extract the general source link into this variable
+                items:
+                  type: string
+                type: array
+            required:
+            - urls
+            type: object
+        structured_output_enabled: true
+        title: url extract
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 95
+      id: '1744742949280'
+      parentId: '1742819137183'
+      position:
+        x: 388.02009879492573
+        y: 277.69648593397017
+      positionAbsolute:
+        x: 354.1723924628059
+        y: 973.8190397397788
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        author: Dify
+        desc: ''
+        height: 587
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Deep
+          research is a typical scenario for agentic workflow, where the user''s intent
+          can be understood through a series of steps and formalized","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Supplemental
+          background information before starting the study Avoid long user waits with
+          Anwser node streaming output","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 583
+      height: 587
+      id: '1744806191843'
+      position:
+        x: -653.1898695352812
+        y: 607.3388861908143
+      positionAbsolute:
+        x: -653.1898695352812
+        y: 607.3388861908143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 583
+    - data:
+        author: Dify
+        desc: ''
+        height: 606
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    const
+          knowleage gaps = \"\";       // knowleage gap","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    const
+          fingdings = [];       // Collected knowledge","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    nextSearchTopic:
+          \"\",          // next search topic       ","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"   ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: pink
+        title: ''
+        type: ''
+        width: 1158
+      height: 606
+      id: '1744806460601'
+      position:
+        x: -54.22494791047882
+        y: 607.3388861908143
+      positionAbsolute:
+        x: -54.22494791047882
+        y: 607.3388861908143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1158
+    - data:
+        author: Dify
+        desc: ''
+        height: 612
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"The
+          outer layer is the reflection loop, and the inner layer is the execution
+          loop where agents carry out research work on specific subtopics. Answers
+          are obtained in the execution loop through function calls of search/visit/think
+          tools.","type":"text","version":1},{"type":"linebreak","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          process is very similar to the \"reflection\" stage in human research -
+          thinking about \"what I already know\", \"what I still need to know\", and
+          \"what should I query next\". The innovation of the entire system lies in
+          this iterative approach: collect information; analyze the \"gap\" between
+          existing information and the original problem; generate new queries to fill
+          these gaps; repeat this process until the gaps are filled.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 667
+      height: 612
+      id: '1744806907836'
+      position:
+        x: 1121.3856688181884
+        y: 607.3388861908143
+      positionAbsolute:
+        x: 1121.3856688181884
+        y: 607.3388861908143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 667
+    - data:
+        desc: ''
+        is_team_authorization: false
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The keywords or phrases to search
+            ja_JP: 検索キーワードまたはフレーズ
+            pt_BR: As palavras-chave ou frases para pesquisar
+            zh_Hans: 搜索关键词或语句，例如：北京天气
+          label:
+            en_US: query
+            ja_JP: query
+            pt_BR: query
+            zh_Hans: query
+          llm_description: 搜索关键词或语句，例如：北京天气
+          max: null
+          min: null
+          name: query
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: noLimit
+          form: llm
+          human_description:
+            en_US: The time range for the search results. Available options noLimit,
+              oneYear, oneMonth, oneWeek, oneDay. Default is noLimit
+            ja_JP: 検索結果の時間範囲。利用可能なオプションは noLimit, oneYear, oneMonth, oneWeek, oneDay
+              です。デフォルトは noLimit です
+            pt_BR: O intervalo de tempo para os resultados da pesquisa. Opções disponíveis
+              noLimit, oneYear, oneMonth, oneWeek, oneDay. O padrão é noLimit
+            zh_Hans: 搜索的时间范围，可选值为 noLimit, oneYear, oneMonth, oneWeek, oneDay。默认为
+              noLimit
+          label:
+            en_US: freshness
+            ja_JP: freshness
+            pt_BR: freshness
+            zh_Hans: freshness
+          llm_description: 搜索的时间范围，可选值为 noLimit, oneYear, oneMonth, oneWeek, oneDay。默认为
+            noLimit
+          max: null
+          min: null
+          name: freshness
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          freshness: ''
+          query: ''
+        provider_id: seekerliu/bocha/bocha
+        provider_name: seekerliu/bocha/bocha
+        provider_type: builtin
+        selected: false
+        title: Bocha AI Search
+        tool_configurations: {}
+        tool_description: 在博查网页搜索的基础上，AI识别搜索词语义并额外返回垂直领域内容的结构化模态卡，例如天气卡、日历卡、百科卡等
+        tool_label: Bocha AI Search
+        tool_name: BochaAISearch
+        tool_parameters:
+          query:
+            type: mixed
+            value: '{{#1742554928243.research_topic#}}'
+        type: tool
+      height: 53
+      id: '1750326292550'
+      position:
+        x: -626.566250733924
+        y: 903.5176565443866
+      positionAbsolute:
+        x: -626.566250733924
+        y: 903.5176565443866
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 423.4297402613697
+      y: -169.9364749801481
+      zoom: 0.6134616633109807

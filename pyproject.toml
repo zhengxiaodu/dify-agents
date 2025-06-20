@@ -1,0 +1,11 @@
+[project]
+name = "dify_agents"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.9.4",
+    "requests>=2.32.4",
+]
